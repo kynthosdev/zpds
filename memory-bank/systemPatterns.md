@@ -52,12 +52,13 @@ The project is built on a **Nuxt UI SaaS template** that provides:
 - Excellent performance for expected load
 
 ### Authentication Approach
-**Decision**: Build custom authentication using Nuxt server API
+**Decision**: Use Clerk for authentication and user management
 **Rationale**:
-- Full control over user management
-- Integration with existing Nuxt UI components
-- No external dependencies for MVP
-- Easier customization for business requirements
+- Rapid implementation with pre-built features (social logins, MFA, JWT handling)
+- Enhanced security and compliance out-of-the-box
+- Seamless integration with Nuxt via @clerk/nuxt
+- Scalable for future enterprise needs while accelerating MVP delivery
+- Reduces custom code maintenance and security risks
 
 ### State Management
 **Decision**: Use Nuxt's built-in state management with Pinia
@@ -178,8 +179,9 @@ Idea (1) ──── (many) StatusHistory
 
 ### 1. Authentication Flow
 ```
-Registration → Email Verification → Profile Setup → Dashboard Access
-Login → Session Creation → Role-Based Routing → Feature Access
+Clerk Registration/SignUp → User Creation Webhook → DB Sync → Dashboard Access
+Clerk Login/SignIn → JWT Verification → Role Check (Metadata) → Feature Access
+Profile Update → Webhook Sync → RBAC Update
 ```
 
 ### 2. Idea Lifecycle
@@ -228,11 +230,13 @@ notifications (id, user_id, type, content, read_at, created_at)
 - Rate limiting for API protection
 
 ### Security Patterns
-- JWT tokens for authentication
-- Role-based access control (RBAC)
-- Input sanitization and validation
-- SQL injection prevention
-- XSS protection through Vue's built-in escaping
+- Clerk-managed JWT tokens and session security
+- Role-based access control (RBAC) via Clerk user metadata
+- Input sanitization and validation with Zod
+- SQL injection prevention through prepared statements
+- XSS protection through Vue's built-in escaping and Clerk's secure components
+- Webhook verification for Clerk user sync
+- Rate limiting on API endpoints
 
 ## Performance Considerations
 

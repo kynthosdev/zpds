@@ -52,6 +52,15 @@
 - **Error Handling**: Detailed validation error messages
 - **Form Validation**: Client-side form validation
 
+### Authentication
+**Clerk** - User authentication and management service
+- **@clerk/nuxt**: Official Nuxt integration module
+- **JWT & Sessions**: Secure token handling and session management
+- **RBAC Support**: Role-based access via user metadata
+- **Webhook Integration**: Sync users with database on events
+- **Customization**: Themeable components matching Nuxt UI
+- **Environment Vars**: CLERK_PUBLISHABLE_KEY, CLERK_SECRET_KEY
+
 ## Development Setup
 
 ### Package Manager
@@ -62,6 +71,10 @@
 
 ### Environment Configuration
 ```bash
+# Clerk Environment Variables (add to .env)
+# CLERK_PUBLISHABLE_KEY=pk_test_...
+# CLERK_SECRET_KEY=sk_test_...
+
 # Development server with Turbo
 pnpm dev --turbo
 
@@ -105,8 +118,8 @@ zpds/
 - **Progressive Enhancement**: Graceful degradation for older browsers
 
 ### Security Requirements
-- **Authentication**: JWT-based session management
-- **Authorization**: Role-based access control
+- **Authentication**: Clerk-based authentication and session management
+- **Authorization**: Role-based access control via Clerk metadata
 - **Data Protection**: Encryption at rest and in transit
 - **Input Validation**: Server-side validation for all inputs
 - **XSS Prevention**: Content Security Policy implementation
@@ -127,7 +140,8 @@ zpds/
   "@nuxt/image": "^1.11.0",      // Image optimization
   "nuxt": "^4.1.2",              // Core framework
   "better-sqlite3": "^12.4.1",   // Database driver
-  "zod": "^4.1.11"               // Schema validation
+  "zod": "^4.1.11",              // Schema validation
+  "@clerk/nuxt": "^1.0.0"        // Authentication service
 }
 ```
 

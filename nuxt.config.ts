@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-og-image',
-    '@nuxt/test-utils'
+    '@nuxt/test-utils',
+    '@clerk/nuxt'
   ],
 
   devtools: {

@@ -49,14 +49,14 @@
 - [ ] Implement audit trail functionality
 
 ### Authentication System (Priority: High)
-- [ ] Design JWT-based authentication
-- [ ] Create user registration API
-- [ ] Implement login/logout functionality
-- [ ] Add password reset capability
-- [ ] Create role-based access control
-- [ ] Implement session management
-- [ ] Add user profile management
-- [ ] Create authentication middleware
+- [x] Sign up for Clerk and configure application instance
+- [x] Install @clerk/nuxt via pnpm and update nuxt.config.ts
+- [x] Wrap app with ClerkProvider in app.vue
+- [x] Integrate Clerk components for login/signup/profile
+- [x] Implement protected routes with Clerk middleware
+- [ ] Sync Clerk users with SQLite via webhooks (deferred)
+- [ ] Add RBAC using Clerk metadata in API endpoints (partial in AppHeader.vue; full backend deferred)
+- [ ] Test auth flows and security (deferred)
 
 ### Core Application Structure (Priority: High)
 - [ ] Create authenticated dashboard layout
@@ -122,9 +122,9 @@
 
 ### Integration Features - Deferred
 - [ ] External API integrations (Deferred: Focus on core features first)
-- [ ] Third-party authentication providers (Deferred: Custom auth sufficient for MVP)
 - [ ] Advanced analytics with external tools (Deferred: Basic analytics sufficient initially)
 - [ ] Mobile app development (Deferred: Web-first approach)
+
 
 ### Enterprise Features - Deferred
 - [ ] Multi-tenant architecture (Deferred: Single-tenant MVP)
@@ -182,7 +182,7 @@
 ## Known Issues
 
 ### Current Limitations
-- **No Authentication**: Template has no user management system
+- **Clerk Dependency**: Need to configure external auth service
 - **No Database**: No persistent data storage implemented
 - **Static Content**: All content is currently static
 - **No Business Logic**: Template is presentation-only
@@ -243,16 +243,16 @@
 ## Next Session Priorities
 
 ### Immediate Actions
-1. **Database Schema Design**: Create comprehensive data model
-2. **Authentication Planning**: Design user management system
-3. **API Structure**: Plan server-side API architecture
-4. **Component Analysis**: Review existing template components
-5. **Development Environment**: Set up local development workflow
+1. **Complete Frontend Auth**: Update signup.vue with <SignUp />, create profile.vue with <UserProfile />, add basic protected routes and RBAC in header
+2. **Memory Bank Finalization**: Complete documentation updates for auth pivot
+3. **Database Schema Design**: Create comprehensive data model with clerk_user_id
+4. **API Structure**: Plan server-side API with Clerk verification (after frontend)
+5. **Development Environment**: Set up local development workflow with Clerk env vars
 
 ### Week 1 Goals
-1. **Database Implementation**: Set up SQLite with core tables
-2. **Authentication Foundation**: Basic user registration/login
-3. **Dashboard Structure**: Create authenticated application shell
+1. **Clerk Authentication**: Frontend integration complete (login working; finish signup/profile/RBAC); backend deferred
+2. **Database Implementation**: Set up SQLite with core tables including clerk_user_id
+3. **Dashboard Structure**: Create authenticated application shell with Clerk (protected index.vue)
 4. **Development Workflow**: Establish coding standards and practices
 
 ### Success Criteria for Next Phase
