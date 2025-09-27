@@ -1,37 +1,44 @@
-# Nuxt SaaS Template
+# IdeaNexus - Innovation Management Platform
 
 [![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+[![Clerk](https://img.shields.io/badge/Auth%20with-Clerk-1E40AF?logo=clerk&labelColor=020420)](https://clerk.com)
 
-Fully built SaaS application to launch your next project with a landing page, a pricing page, a documentation and a blog powered by [Nuxt UI](https://ui.nuxt.com) components.
+IdeaNexus is a streamlined SaaS platform for small and medium-sized businesses (SMBs) to systematically capture, evaluate, and implement innovative ideas. Built following lean startup principles, it addresses unstructured innovation processes in South African SMEs. Powered by Nuxt 4, Nuxt UI components, Clerk authentication, and SQLite for the MVP.
 
-- [Live demo](https://saas-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/nuxt)
-
-<a href="https://saas-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/saas-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/saas-light.png">
-    <img alt="Nuxt SaaS Template" src="https://ui.nuxt.com/assets/templates/nuxt/saas-light.png">
-  </picture>
-</a>
+For detailed project context, see the [memory-bank/projectbrief.md](memory-bank/projectbrief.md) and other documentation files.
 
 ## Quick Start
 
-```bash [Terminal]
-npm create nuxt@latest -- -t github:nuxt-ui-templates/saas
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/your-org/ideanexus.git  # Replace with actual repo URL
+cd ideanexus
+pnpm install
 ```
 
-## Deploy your own
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=saas&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fsaas&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fsaas-dark.png&demo-url=https%3A%2F%2Fsaas-template.nuxt.dev%2F&demo-title=Nuxt%20SaaS%20Template&demo-description=A%20SaaS%20template%20with%20landing%2C%20pricing%2C%20docs%20and%20blog%20powered%20by%20Nuxt%20Content.)
+Set up environment variables (see Setup section below), then start the development server.
 
 ## Setup
 
-Make sure to install the dependencies:
+Install dependencies:
 
 ```bash
 pnpm install
 ```
+
+### Environment Variables
+
+Copy `.env.example` to `.env` and configure:
+
+```
+CLERK_PUBLISHABLE_KEY=pk_test_...
+CLERK_SECRET_KEY=sk_test_...
+# Add other vars as needed (e.g., DATABASE_URL for future migrations)
+```
+
+- Get Clerk keys from your [Clerk dashboard](https://dashboard.clerk.com).
+- For development, use test keys; switch to live for production.
 
 ## Development Server
 
@@ -41,6 +48,36 @@ Start the development server on `http://localhost:3000`:
 pnpm dev
 ```
 
+Note: Authentication is required for protected routes (e.g., dashboard). Sign up/login via Clerk to test.
+
+## Core Features (MVP)
+
+The MVP focuses on essential innovation lifecycle management:
+
+| Feature | Description | Status |
+|---------|-------------|--------|
+| Idea Submission Portal | Simple form for title, description, benefits, and submitter info | Planned |
+| Idea Repository | Searchable database of submitted ideas | Planned |
+| Basic Evaluation Framework | Scoring on impact, feasibility, resources | Planned |
+| Status Tracking | Visual board for idea progression (submitted → implemented) | Planned |
+| Email Notifications | Automated updates on submissions and status changes | Planned |
+| Simple Analytics Dashboard | Metrics on idea flow, approvals, implementation times | Planned |
+
+See [memory-bank/projectbrief.md](memory-bank/projectbrief.md) for full user stories and wireframes.
+
+## Tech Stack
+
+- **Framework**: Nuxt 4.1.2 (Vue 3, TypeScript, SSR)
+- **UI**: Nuxt UI 4.0.0 (Tailwind CSS, Headless UI, Lucide Icons)
+- **Content**: Nuxt Content 3.7.1 (Markdown/YAML for docs/blog)
+- **Database**: SQLite with better-sqlite3 12.4.1 (MVP; PostgreSQL migration path)
+- **Authentication**: Clerk (@clerk/nuxt) with RBAC via metadata
+- **Validation**: Zod 4.1.11 for schemas and forms
+- **Tools**: pnpm 10.17.1, ESLint 9.36.0, @nuxt/image, @vueuse/nuxt
+- **Other**: nuxt-og-image for social previews
+
+For full details, see [memory-bank/techContext.md](memory-bank/techContext.md).
+
 ## Production
 
 Build the application for production:
@@ -49,14 +86,52 @@ Build the application for production:
 pnpm build
 ```
 
-Locally preview production build:
+Preview the production build:
 
 ```bash
 pnpm preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+### Deployment
 
-## Renovate integration
+- **Recommended**: Vercel or Netlify for Nuxt apps.
+- Configure Clerk webhooks for user sync with database.
+- For production DB, migrate to PostgreSQL and set DATABASE_URL.
+- See [Nuxt deployment docs](https://nuxt.com/docs/getting-started/deployment) for more.
 
-Install [Renovate GitHub app](https://github.com/apps/renovate/installations/select_target) on your repository and you are good to go.
+## Code Quality
+
+Run linting:
+
+```bash
+pnpm lint
+```
+
+Type checking:
+
+```bash
+pnpm typecheck
+```
+
+## Contributing
+
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature/idea-submission`).
+3. Commit changes (`git commit -m 'Add idea submission form'`).
+4. Push to the branch (`git push origin feature/idea-submission`).
+5. Open a Pull Request.
+
+Current progress tracked in [memory-bank/progress.md](memory-bank/progress.md). Focus on authentication completion before core features.
+
+## License
+
+MIT License. See [LICENSE](LICENSE) for details (create if missing).
+
+## Next Steps
+
+- Complete Clerk backend integration (webhooks, API protection).
+- Implement database schema for users and ideas.
+- Build MVP features per 12-week timeline in projectbrief.md.
+- User testing and iteration based on feedback.
+
+For questions, refer to memory-bank files or open an issue.
