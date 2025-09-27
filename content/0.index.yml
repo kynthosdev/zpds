@@ -1,150 +1,148 @@
-title: Ship Your [SaaS]{class="text-primary"} at light speed
-description: Build production-ready SaaS applications with Nuxt UI's powerful components, authentication flows, and enterprise features. The same component library trusted by the entire Nuxt ecosystem.
+title: Streamline Innovation for Your SMB with [IdeaNexus]{class="text-primary"}
+description: Capture, evaluate, and implement innovative ideas systematically. IdeaNexus provides structured workflows, evaluation tools, and analytics to drive business growth for South African SMBs.
 seo:
-  title: Nuxt UI SaaS Template
-  description: Create stunning, fast and production-ready SaaS applications with Nuxt UI. 100+ Vue components, authentication, dark mode, and enterprise features built on Tailwind CSS.
+  title: IdeaNexus - Innovation Management for SMBs
+  description: Systematic idea management platform for South African businesses. Capture ideas, evaluate potential, track implementation, and measure innovation ROI with IdeaNexus.
 navigation: false
 hero:
   links:
-    - label: Get started
+    - label: Get Started
       icon: i-lucide-arrow-right
       trailing: true
-      to: https://ui.nuxt.com/docs/getting-started/installation/nuxt
-      target: _blank
+      to: /docs/getting-started
       size: xl
-    - label: Use this template
+    - label: View on GitHub
       icon: i-simple-icons-github
       size: xl
       color: neutral
       variant: subtle
-      to: https://github.com/nuxt-ui-templates/saas
+      to: https://github.com/your-org/ideanexus
       target: _blank
 sections:
-  - title: Powered by Nuxt UI Components
-    description: Access the complete Nuxt UI component library with 100+ beautifully styled, accessible, and customizable Vue components. Everything you need to build professional SaaS applications.
+  - title: Powered by IdeaNexus Features
+    description: Comprehensive tools for innovation management, from idea capture to implementation tracking. Built on Nuxt UI for professional, accessible interfaces.
     id: features
     orientation: horizontal
     features:
-      - name: 100+ UI Components
-        description: From buttons to modals, data tables to forms - all styled with Tailwind CSS and accessible out of the box.
+      - name: Idea Submission Portal
+        description: Simple forms to capture ideas with essential details like benefits and resources needed.
         icon: i-lucide-package
-      - name: Authentication Ready
-        description: Pre-built login, signup, and password reset flows. Just connect your backend and start onboarding users.
+      - name: Evaluation Framework
+        description: Structured scoring on impact, feasibility, and alignment to make objective decisions.
         icon: i-lucide-shield
-      - name: TypeScript First
-        description: Full TypeScript support with auto-completion, type safety, and IntelliSense for every component and composable.
+      - name: Status Tracking
+        description: Visual pipeline showing ideas from submission to implementation with real-time updates.
         icon: i-lucide-code-2
-  - title: Built for Modern SaaS
-    description: Everything you need to launch and scale your SaaS. From beautiful marketing pages to complex dashboards, ship faster with production-ready patterns.
+  - title: Built for SMB Innovation
+    description: Tailored for South African businesses to manage innovation efficiently. From idea capture to ROI measurement, accelerate your competitive edge.
     orientation: horizontal
     reverse: true
     features:
-      - name: Edge Performance
-        description: Optimized for Core Web Vitals with automatic code splitting, lazy loading, and SSR/SSG support.
+      - name: Workflow Automation
+        description: Automated notifications and status updates keep teams aligned without manual effort.
         icon: i-lucide-zap
-      - name: Dark Mode Ready
-        description: Automatic theme switching with smooth transitions. Respects system preferences and remembers user choice.
-        icon: i-lucide-moon
-      - name: Global Ready
-        description: Built-in i18n support for 50+ languages with RTL/LTR layouts and @nuxt/fonts integration.
-        icon: i-lucide-globe
+      - name: Role-Based Access
+        description: Secure permissions for contributors, evaluators, managers, and executives.
+        icon: i-lucide-shield
+      - name: Analytics Dashboard
+        description: Track idea flow, approval rates, and business impact with intuitive metrics.
+        icon: i-lucide-trending-up
 features:
-  title: Everything You Need to Ship
-  description: Stop building from scratch. Focus on your unique features while Nuxt UI handles the foundations with battle-tested components and patterns.
+  title: Everything You Need for Innovation Management
+  description: Focus on driving business growth while IdeaNexus handles the innovation pipeline with proven workflows and tools.
   items:
-    - title: Beautiful Design System
-      description: Semantic color aliases, comprehensive design tokens, and Tailwind Variants for consistent, customizable styling.
-      icon: i-lucide-palette
-    - title: Accessible by Default
-      description: Built on Reka UI for robust accessibility. WCAG compliant components that work for everyone, everywhere.
-      icon: i-lucide-accessibility
-    - title: Developer Experience
-      description: Auto-imports, hot module replacement, and comprehensive documentation. Build faster with less friction.
-      icon: i-lucide-terminal
-    - title: SEO Optimized
-      description: Server-side rendering, automatic meta tags, sitemap generation, and Open Graph images out of the box.
-      icon: i-lucide-search
-    - title: Production Ready
-      description: Error handling, loading states, form validation, and security best practices built into every component.
+    - title: Structured Idea Capture
+      description: Easy submission forms that collect essential details for effective evaluation.
+      icon: i-lucide-lightbulb
+    - title: Objective Evaluation
+      description: Standardized criteria ensure fair assessment across teams and departments.
       icon: i-lucide-check-circle
-    - title: Infinitely Customizable
-      description: Override any style with the ui prop, customize globally with AppConfig, or use Tailwind classes directly.
-      icon: i-lucide-settings
+    - title: Transparent Tracking
+      description: Visual status boards show idea progression from submission to implementation.
+      icon: i-lucide-activity
+    - title: Team Collaboration
+      description: Notifications and feedback loops keep contributors engaged throughout the process.
+      icon: i-lucide-users
+    - title: Impact Measurement
+      description: Analytics track ROI and identify innovation bottlenecks for continuous improvement.
+      icon: i-lucide-bar-chart-3
+    - title: SMB Optimized
+      description: Affordable, easy-to-deploy solution designed for South African businesses.
+      icon: i-lucide-briefcase
 testimonials:
-  headline: Trusted by Developers
-  title: Join Thousands Building with Nuxt UI
-  description: See why developers choose Nuxt UI to ship their SaaS applications faster and with more confidence.
+  headline: Trusted by SMB Leaders
+  title: Join Businesses Driving Innovation with IdeaNexus
+  description: See why South African SMBs choose IdeaNexus to systematize their innovation processes and unlock growth opportunities.
   items:
-    - quote: Nuxt UI transformed how we build. The component quality is exceptional - everything just works with perfect TypeScript support, accessibility, and dark mode built in.
+    - quote: IdeaNexus has transformed our scattered idea process into a structured pipeline. We now evaluate and implement innovations systematically.
       user:
-        name: Sarah Chen
-        description: CTO at TechScale Solutions
+        name: Thabo Mthembu
+        description: Innovation Manager at LocalTech Solutions
         avatar:
           src: https://i.pravatar.cc/120?img=1
-    - quote: We shipped our MVP in 2 weeks instead of 2 months. The authentication flows and form components saved us countless hours of development time.
+    - quote: The evaluation framework ensures we make data-driven decisions. We've approved 30% more high-potential ideas since implementation.
       user:
-        name: Marcus Rodriguez
-        description: VP of Engineering at DataFlow
+        name: Nomvula Nkosi
+        description: Operations Director at AgriGrow
         avatar:
           src: https://i.pravatar.cc/120?img=7
-    - quote: The design system with AppConfig is brilliant. We maintain brand consistency across all our products while leveraging the full component library.
+    - quote: Employees feel empowered to contribute ideas knowing there's a clear process. Engagement in innovation has doubled across departments.
       user:
-        name: David Kumar
-        description: Security Director at SecureStack
+        name: Pieter van der Merwe
+        description: CEO at BuildSmart Construction
         avatar:
           src: https://i.pravatar.cc/120?img=3
-    - quote: Perfect Lighthouse scores out of the box. Our Core Web Vitals improved dramatically just by switching to Nuxt UI components.
+    - quote: The analytics dashboard gives us visibility into our innovation ROI. We can now justify resource allocation to executives.
       user:
-        name: Emily Zhang
-        description: Lead Architect at ScaleForce
+        name: Aisha Patel
+        description: Strategy Lead at HealthConnect
         avatar:
           src: https://i.pravatar.cc/120?img=5
-    - quote: The Tailwind Variants system makes customization so intuitive. We can override any component style while keeping the functionality intact.
+    - quote: Simple to deploy and use, yet powerful enough for our growing team. Perfect balance for SMB innovation management.
       user:
-        name: James Wilson
-        description: DevOps Lead at CloudPro
+        name: Johan Botha
+        description: IT Manager at RetailMax
         avatar:
           src: https://i.pravatar.cc/120?img=8
-    - quote: From the SaaS template to production in days. The pre-built layouts, navigation, and content structure accelerated our launch.
+    - quote: Status tracking keeps everyone informed without constant meetings. Our idea-to-implementation time has been cut in half.
       user:
-        name: Lisa Patel
-        description: CEO at AutoScale
+        name: Lerato Mbatha
+        description: HR Director at EduFuture
         avatar:
           src: https://i.pravatar.cc/120?img=9
-    - quote: Reka UI foundation means accessibility is never an afterthought. We achieved WCAG compliance without any custom work.
+    - quote: Customizable evaluation criteria align perfectly with our business goals. No more subjective decision-making.
       user:
-        name: Michael Torres
-        description: Frontend Lead at AccessFirst
+        name: Sipho Dlamini
+        description: Product Manager at FinSecure
         avatar:
           src: https://i.pravatar.cc/120?img=11
-    - quote: The documentation is outstanding. Every component has clear examples, and the community on Discord is incredibly helpful.
+    - quote: The notification system ensures nothing falls through the cracks. Our innovation process is now truly collaborative.
       user:
-        name: Rachel Kim
-        description: Performance Engineer at APIHub
+        name: Fatima Ismail
+        description: Executive Sponsor at GreenEnergy SA
         avatar:
           src: https://i.pravatar.cc/120?img=10
-    - quote: We replaced three different UI libraries with Nuxt UI. The consistency and quality across all components is unmatched.
+    - quote: Affordable and tailored for South African businesses. We've seen measurable impact on our competitive positioning.
       user:
-        name: Thomas Weber
-        description: UI Architecture Lead at DesignScale
+        name: David Cohen
+        description: Founder at InnovateHub
         avatar:
           src: https://i.pravatar.cc/120?img=12
-    - quote: The integration with Nuxt modules is seamless. Color mode, fonts, icons - everything works together perfectly.
+    - quote: From idea submission to implementation tracking, IdeaNexus covers the entire lifecycle seamlessly.
       user:
-        name: Sophia Martinez
-        description: Integration Specialist at TechFlow
+        name: Zanele Khumalo
+        description: Department Head at Manufacturing Pro
         avatar:
           src: https://i.pravatar.cc/120?img=14
 cta:
-  title: Ready to build an amazing SaaS?
-  description: Join thousands of developers building with Nuxt and Nuxt UI. Get this template and start shipping today.
+  title: Ready to systematize your innovation?
+  description: Join South African SMBs transforming ideas into business growth. Start your IdeaNexus journey today.
   links:
-    - label: Start building
-      to: 'https://ui.nuxt.com/docs/getting-started/installation/nuxt'
-      target: _blank
+    - label: Get Started
+      to: '/docs/getting-started'
       trailingIcon: i-lucide-arrow-right
     - label: View on GitHub
-      to: 'https://github.com/nuxt-ui-templates/saas'
+      to: 'https://github.com/your-org/ideanexus'
       target: _blank
       variant: subtle
       icon: i-simple-icons-github

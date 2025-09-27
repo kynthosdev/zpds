@@ -1,20 +1,29 @@
 <script setup lang="ts">
-const route = useRoute()
+// const route = useRoute()
 
-const items = computed(() => [{
-  label: 'Docs',
-  to: '/docs',
-  active: route.path.startsWith('/docs')
-}, {
-  label: 'Pricing',
-  to: '/pricing'
-}, {
-  label: 'Blog',
-  to: '/blog'
-}, {
-  label: 'Changelog',
-  to: '/changelog'
-}])
+const items = computed(() => [
+  // {
+  //   label: 'Docs',
+  //   to: '/docs',
+  //   active: route.path.startsWith('/docs')
+  // },
+  {
+    label: 'Home',
+    to: '/'
+  },
+  {
+    label: 'Pricing',
+    to: '/pricing'
+  },
+  {
+    label: 'Blog',
+    to: '/blog'
+  },
+  {
+    label: 'Changelog',
+    to: '/changelog'
+  }
+])
 </script>
 
 <template>
@@ -23,7 +32,6 @@ const items = computed(() => [{
       <NuxtLink to="/">
         <AppLogo class="w-auto h-6 shrink-0" />
       </NuxtLink>
-      <TemplateMenu />
     </template>
 
     <UNavigationMenu

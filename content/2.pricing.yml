@@ -1,83 +1,99 @@
-title: A plan for every need
-description: Our plans are designed to meet the requirements of both beginners and players. Get the right plan that suits you.
+title: A plan for every business size
+description: Flexible pricing to match your team's innovation needs. Start free and scale as your ideas grow.
 seo:
-  title: Pricing
-  description: Choose the plan that's right for you.
-navigation.icon: i-lucide-credit-card
+  title: IdeaNexus Pricing - Innovation Management Plans
+  description: Choose the right plan for your SMB. From free trials to enterprise features, systematize innovation affordably.
+navigation.icon: i-lucide-briefcase
 plans:
-  - title: Basic
-    description: A basic plan for individuals.
+  - title: Freemium
+    description: Perfect for small teams to try IdeaNexus.
     price:
-      month: $9.9
-      year: $99.9
+      month: R0
+      year: R0
+    button:
+      label: Start Free
+      color: neutral
+      variant: subtle
+    features:
+      - Up to 10 ideas/month
+      - Basic submission and tracking
+      - Email notifications
+      - Community support
+      - 1 user
+      - Standard security
+
+  - title: Starter
+    description: Essential innovation management for growing teams (5-20 employees).
+    price:
+      month: R1,500
+      year: R15,300
     button:
       label: Get Started
       color: neutral
       variant: subtle
     features:
-      - 1 GB Storage
-      - 1 Email Account
-      - 1 Domain
-      - 1 Website
-      - 1 Database
-      - 1 SSL Certificate
-      - 1 Support Ticket
-  - title: Standard
-    description: A standard plan for small teams.
+      - Up to 50 ideas/month
+      - Full submission, evaluation, and tracking
+      - Basic analytics
+      - Email support
+      - Up to 5 users
+      - Custom evaluation criteria
+  - title: Professional
+    description: Advanced features for established SMBs (21-100 employees). Most popular.
     price:
-      month: $19.9
-      year: $199.9
+      month: R4,500
+      year: R45,900
     highlight: true
     scale: true
     button:
       label: Get Started
     features:
-      - 10 GB Storage
-      - 10 Email Accounts
-      - 10 Domains
-      - 10 Websites
-      - 10 Databases
-      - 10 SSL Certificates
-      - 10 Support Tickets
-  - title: Premium
-    description: A premium plan for large teams.
+      - Up to 200 ideas/month
+      - Advanced analytics and reporting
+      - Custom workflows
+      - Priority email support
+      - Up to 20 users
+      - Collaboration tools
+      - Integration with project management
+  - title: Enterprise
+    description: Unlimited innovation for large organizations (100+ employees).
     price:
-      month: $29.9
-      year: $299.9
+      month: R12,000
+      year: R122,400
     button:
       label: Get Started
       color: neutral
       variant: subtle
     features:
-      - 100 GB Storage
-      - 100 Email Accounts
-      - 100 Domains
-      - 100 Websites
-      - 100 Databases
-      - 100 SSL Certificates
-      - 100 Support Tickets
+      - Unlimited ideas
+      - Full API access and custom integrations
+      - Advanced analytics and ROI tracking
+      - Dedicated support and consulting
+      - Unlimited users
+      - White-label options
+      - Custom development
 logos:
-  title: Trusted by the world's best
+  title: Built with trusted technologies
   icons:
-    - i-simple-icons-amazonaws
-    - i-simple-icons-heroku
-    - i-simple-icons-netlify
-    - i-simple-icons-vercel
-    - i-simple-icons-cloudflare
+    - i-simple-icons-nuxtdotjs
+    - i-simple-icons-vue
+    - i-simple-icons-tailwindcss
+    - i-simple-icons-typescript
+    - i-simple-icons-git
 faq:
   title: Frequently asked questions
-  description: Culpa consectetur dolor pariatur commodo aliqua amet tempor nisi enim deserunt elit cillum.
+  description: Find answers to common questions about IdeaNexus pricing and features.
   items:
-    - label: Is this a secure service?
-      content: Qui sunt nostrud aliquip reprehenderit enim proident veniam magna aliquip velit occaecat eiusmod nisi deserunt sunt.
+    - label: How does the Freemium plan work?
+      content: The Freemium plan is completely free and allows up to 10 ideas per month with basic features. Upgrade anytime to unlock more capacity and advanced tools.
       defaultOpen: true
-    - label: How can I cancel my subscription?
-      content: Consectetur irure Lorem nostrud adipisicing aliqua mollit Lorem sit officia magna eiusmod cupidatat.
-    - label: How does the free trial work?
-      content: Quis officia commodo magna eu qui aliquip duis.
+    - label: Can I cancel my subscription anytime?
+      content: Yes, you can cancel your subscription at any time from your account settings. You'll retain access until the end of your current billing period.
+    - label: What happens when I exceed my idea limit?
+      content: You'll be prompted to upgrade your plan. Ideas beyond the limit will be queued until you increase your capacity.
     - label: Can I switch plans later?
-      content: Dolore irure ullamco dolore eu occaecat magna eiusmod dolor aliqua culpa labore.
+      content: Absolutely. Upgrade or downgrade plans seamlessly. We'll prorate your billing to make the transition smooth.
     - label: Do you offer refunds?
-      content: Duis mollit nostrud voluptate mollit Lorem dolore commodo veniam incididunt eiusmod.
-    - label: Do you offer support?
-      content: Aliqua sit nisi consequat pariatur Lorem minim irure qui.
+      content: We offer a 30-day money-back guarantee for paid plans. Contact support within 30 days for a full refund.
+    - label: What support is included?
+      content: Freemium gets community support, Starter has email support, Professional includes priority email, and Enterprise offers dedicated support and consulting.
