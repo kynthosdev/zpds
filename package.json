@@ -19,8 +19,10 @@
     "@nuxt/test-utils": "3.19.2",
     "@nuxt/ui": "^4.0.0",
     "@standard-schema/spec": "^1.0.0",
+    "@unovis/vue": "^1.6.1",
     "@vueuse/nuxt": "^13.9.0",
     "better-sqlite3": "^12.4.1",
+    "date-fns": "^4.1.0",
     "nuxt": "^4.1.2",
     "nuxt-og-image": "^5.1.11",
     "zod": "^4.1.11"

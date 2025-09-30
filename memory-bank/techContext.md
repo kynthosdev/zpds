@@ -248,7 +248,7 @@ export const useIdeaStore = defineStore('ideas', () => {
   const fetchIdeas = async () => {
     loading.value = true
     try {
-      ideas.value = await $fetch('/api/ideas')
+      ideas.value = await $fetch('/api/dashboard/ideas')
     } finally {
       loading.value = false
     }
