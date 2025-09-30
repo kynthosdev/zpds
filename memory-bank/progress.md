@@ -97,6 +97,8 @@
 - [ ] Add modal dialogs
 - [ ] Create form validation components
 - [ ] Implement file upload components
+- [x] Update AppLogo.vue to gradient brain icon design with InnovatePro text (September 30, 2025)
+  - [x] Fix text visibility with theme-aware `text-foreground` class (September 30, 2025)
 
 ### Analytics & Reporting (Priority: Low)
 - [ ] Create basic analytics dashboard
