@@ -1,21 +1,65 @@
 # Active Context - IdeaNexus
 
 ## Current Work Focus
-Authentication System Implementation using Clerk. The project has pivoted from custom JWT-based authentication to Clerk to accelerate MVP delivery, enhance security, and reduce maintenance overhead. This decision aligns with lean principles by leveraging a proven third-party service for core user management, allowing faster focus on business logic like idea submission and evaluation workflows.
+
+### Primary Focus: Landing Page Development (Pre-MVP Priority)
+The landing page is now the **highest priority** task, launching **before the platform MVP** to begin lead generation and market validation. This strategic decision enables us to:
+- Start building email list and generating demo requests immediately
+- Validate messaging and value propositions with real market feedback
+- Establish brand presence while platform development continues
+- Create revenue pipeline before product launch
+
+**Timeline**: Landing page launches in Weeks 1-5, before platform MVP (Week 12)
+
+### Secondary Focus: Authentication System
+Clerk integration for authentication continues in parallel with landing page development. The authentication system will support both:
+- Landing page conversion flows (demo requests, trial signups)
+- Platform access once MVP launches
 
 ## Recent Changes
-- Updated development plan to prioritize Clerk integration for authentication (September 27, 2025).
-- Memory Bank updates completed to document the Clerk pivot across relevant files.
-- Implemented prioritized Clerk frontend auth: Account config, @clerk/nuxt install, app.vue wrapper, login/signup/profile components, protected routes (September 27, 2025).
-- Partial RBAC in AppHeader.vue; full backend deferred.
+
+### Landing Page Integration (January 8, 2025)
+- Added comprehensive landing page brief to memory bank (landingPageBrief.md)
+- Updated productContext.md with landing page strategy and conversion goals
+- Updated systemPatterns.md with landing page architecture patterns
+- Updated techContext.md with landing page technical stack
+- Documented integration between landing page CTAs and Clerk authentication
+- Established mock content strategy for testimonials and case studies
+
+### Authentication System (September 27, 2025)
+- Updated development plan to prioritize Clerk integration for authentication
+- Memory Bank updates completed to document the Clerk pivot across relevant files
+- Implemented prioritized Clerk frontend auth: Account config, @clerk/nuxt install, app.vue wrapper, login/signup/profile components, protected routes
+- Partial RBAC in AppHeader.vue; full backend deferred
 
 ## Next Steps
-1. Complete frontend refinements (full RBAC in UI, testing basic flows).
-2. Implement deferred backend: Webhook sync for DB, API protection with getAuth, full RBAC enforcement.
-3. Database schema design with clerk_user_id for user table.
-4. Test end-to-end auth (login → protected dashboard → logout).
-5. Proceed to core app structure (authenticated dashboard, navigation).
-6. Update activeContext.md with learnings from testing.
+
+### Immediate Next Steps: Landing Page Refinement
+1. Review and refine landing page component structure based on feedback.
+2. Finalize reusable components (CTAButton, TestimonialCard, FAQAccordion, StatsCard) and ensure consistency.
+3. Implement and test the demo request form integration with Clerk.
+4. Verify Google Analytics 4 setup and event tracking.
+5. Populate Nuxt Content with finalized mock testimonials and case studies.
+
+### Short-term Goals: Landing Page Optimization
+1. Optimize images and performance, targeting a Largest Contentful Paint (LCP) of <2.5s.
+2. Implement mobile responsive design and test on various devices.
+3. Add SEO meta tags and structured data to improve search engine visibility.
+4. Conduct accessibility audit (WCAG 2.1 AA compliance).
+5. Prepare for A/B testing infrastructure setup.
+
+### Medium-term Goals: Landing Page Launch & Analysis
+1. Deploy the landing page to production (Vercel).
+2. Set up A/B testing infrastructure and begin the first test (hero headline).
+3. Monitor conversion metrics and user behavior using Google Analytics 4.
+4. Analyze initial data to identify areas for improvement and further optimization.
+
+### Parallel Track: Authentication Backend
+1. Implement deferred backend: Webhook sync for DB, API protection with getAuth
+2. Database schema design with clerk_user_id for user table
+3. Full RBAC enforcement in API endpoints
+4. Test end-to-end auth flows
+5. Integrate with landing page conversion flows
 
 ## Important Patterns and Preferences
 - **Authentication Pattern**: Use Clerk's `<ClerkProvider>` wrapper in app.vue for global context. Protect routes with Clerk middleware or `<Protect>` components.

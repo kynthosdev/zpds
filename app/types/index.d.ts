@@ -72,3 +72,22 @@ export interface Range {
   start: Date
   end: Date
 }
+
+export interface Idea {
+  id: number
+  title: string
+  description: string
+  status: 'submitted' | 'under_review' | 'approved' | 'in_progress' | 'implemented' | 'rejected'
+  department: string
+  type: string
+  strategy: string
+  workstation: string
+  benefits: string
+  resourcesRequired: 'low' | 'medium' | 'high'
+  submitter: string
+  evaluator: string
+  impactScore: number
+  createdAt: string
+}
+
+export type IdeaStatus = 'submitted' | 'under_review' | 'approved' | 'in_progress' | 'implemented' | 'rejected'
