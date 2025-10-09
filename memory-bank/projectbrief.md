@@ -1,10 +1,19 @@
 # IdeaNexus
 ## 1. Executive Summary
-IdeaNexus will address the critical need for systematic innovation management in small and medium-sized businesses (SMBs) through a streamlined platform that captures, evaluates, and tracks ideas from inception to implementation. Following lean methodology principles, our MVP will focus on validating three core assumptions:
+IdeaNexus will address the critical need for systematic innovation management in small and medium-sized businesses (SMBs) through a streamlined platform that captures, evaluates, and tracks ideas from inception to implementation. Following lean methodology principles, our approach prioritizes **landing page development before platform MVP** to establish market presence and begin lead generation early.
+
+**Strategic Priority Shift**: Landing page launches in Weeks 1-5, before platform MVP (Week 12), to:
+- Start building email list and generating demo requests immediately
+- Validate messaging and value propositions with real market feedback
+- Establish brand presence while platform development continues
+- Create revenue pipeline before product launch
+
+The platform MVP will focus on validating three core assumptions:
 1. SMBs struggle with unstructured innovation processes that lead to missed opportunities and wasted resources
 2. Existing solutions are either too complex or too simplistic for SMB innovation needs
 3. A structured but accessible approach to idea management will drive measurable business value
-The proposed MVP will deliver a focused feature set that enables the complete innovation lifecycle while maintaining simplicity. We'll employ a phased 12-week development approach with continuous user feedback to validate our solution-market fit before significant resource investment. Success metrics will center on user engagement, idea progression through the pipeline, and qualitative feedback on business impact.
+
+The proposed MVP will deliver a focused feature set that enables the complete innovation lifecycle while maintaining simplicity. We'll employ a phased approach with continuous user feedback to validate our solution-market fit before significant resource investment. Success metrics will center on user engagement, idea progression through the pipeline, and qualitative feedback on business impact.
 ## 2. Core MVP Development Principles
 Following Eric Ries' Lean Startup methodology, our MVP development will be guided by these principles:
 1. **Build-Measure-Learn**: Implement rapid iteration cycles to learn from user feedback and improve the product quickly.
@@ -150,26 +159,69 @@ Following Eric Ries' Lean Startup methodology, our MVP development will be guide
 +-----------------------------------------+
 ```
 ## 6. Development Timeline and Milestones
-**12-Week MVP Development Timeline:**
-### Phase 1: Discovery & Design (Weeks 1-3)
-- Week 1: Stakeholder interviews, requirement validation
-- Week 2: User flow definition, wireframing
-- Week 3: UI design, technical architecture planning
-### Phase 2: Core Development (Weeks 4-9)
-- Week 4-5: Database setup, user authentication, basic navigation
-- Week 6-7: Idea submission and repository implementation
-- Week 8-9: Evaluation framework and status tracking
-### Phase 3: Testing & Refinement (Weeks 10-11)
-- Week 10: Internal testing, bug fixes
-- Week 11: Limited user testing with 5-8 target customers, feedback collection
-### Phase 4: Launch Preparation (Week 12)
-- Week 12: Final adjustments, documentation, deployment planning
+**17-Week Development Timeline (Landing Page Priority):**
+
+### Phase 1: Landing Page Development (Weeks 1-5) - **CRITICAL PRIORITY**
+**Goal**: Launch landing page before platform MVP to begin lead generation
+- **Week 1-2: Foundation & Core Components**
+  - Set up landing page project structure
+  - Create reusable landing components (CTAButton, TestimonialCard, FAQAccordion, StatsCard)
+  - Implement navigation bar with sticky header
+  - Build hero section with dual CTAs and trust signals
+  - Set up Google Analytics 4 tracking
+- **Week 2-3: Content Sections**
+  - Implement social proof strip (logo wall)
+  - Build problem/agitation section with cost quantification
+  - Create solution section with 3-step process
+  - Add testimonials and trust badges
+  - Develop differentiation section with comparison table
+- **Week 3-4: Advanced Sections & Integration**
+  - Implement FAQ section with accordion
+  - Build final CTA section with multiple conversion paths
+  - Create footer with comprehensive links
+  - Integrate Clerk for demo request forms
+  - Implement comprehensive analytics tracking
+- **Week 4: Forms & Analytics**
+  - Create demo request form with validation
+  - Set up trial signup flow
+  - Implement A/B testing infrastructure
+  - Add conversion tracking and analytics
+- **Week 5: Testing & Launch**
+  - SEO optimization and meta tags
+  - Accessibility audit (WCAG 2.1 AA)
+  - Performance optimization (<2.5s LCP)
+  - Mobile responsive testing
+  - Deployment to production (Vercel)
+
+### Phase 2: Platform MVP Development (Weeks 6-17)
+**Goal**: Build core innovation management platform
+- **Week 6-8: Foundation Setup**
+  - Database schema design and implementation
+  - User authentication with Clerk integration
+  - Basic dashboard and navigation structure
+  - API foundation and data models
+- **Week 9-12: Core Features**
+  - Idea submission and repository system
+  - Basic evaluation framework
+  - Status tracking and visual board
+  - Email notifications system
+- **Week 13-15: Advanced Features**
+  - Analytics dashboard implementation
+  - User testing and feedback collection
+  - Feature refinement based on user feedback
+  - Performance optimization
+- **Week 16-17: Launch Preparation**
+  - Final testing and bug fixes
+  - Documentation and onboarding materials
+  - Deployment preparation
+  - Go-to-market strategy finalization
+
 **Key Milestones:**
-1. Wireframe approval (End of Week 3)
-2. Functional idea submission system (End of Week 5)
-3. Complete idea lifecycle implementation (End of Week 9)
-4. First external user test completion (End of Week 11)
-5. MVP launch readiness (End of Week 12)
+1. **Landing Page Launch** (End of Week 5) - Primary revenue generation begins
+2. **Platform MVP Launch** (End of Week 17) - Full product available
+3. **First 100 Demo Requests** (Target: Week 8) - Validate market demand
+4. **First 50 Platform Users** (Target: Week 20) - Establish product-market fit
+5. **Revenue Break-even** (Target: Month 8) - Sustainable business model
 ## 7. Budget, Resource Allocation & Monetization Strategy
 
 ### Estimated Resource Requirements
