@@ -91,3 +91,11 @@ export interface Idea {
 }
 
 export type IdeaStatus = 'submitted' | 'under_review' | 'approved' | 'in_progress' | 'implemented' | 'rejected'
+
+// Pipeline column configuration
+export interface PipelineColumnConfig {
+  status: IdeaStatus
+  title: string
+  icon: string
+  color: 'primary' | 'warning' | 'success' | 'info' | 'error'
+}

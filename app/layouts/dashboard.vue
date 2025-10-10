@@ -16,27 +16,20 @@ const links = [
       }
     },
     {
-      label: 'Ideas',
-      to: '/ideas',
+      label: 'Innovations',
+      to: '/innovations',
       icon: 'i-lucide-lightbulb',
       defaultOpen: true,
       type: 'trigger',
       children: [
         {
           label: 'Overview',
-          to: '/ideas',
+          to: '/innovations',
           exact: true,
           onSelect: () => {
             open.value = false
           }
         }
-        // {
-        //   label: 'Members',
-        //   to: '/settings/members',
-        //   onSelect: () => {
-        //     open.value = false
-        //   }
-        // },
         // {
         //   label: 'Notifications',
         //   to: '/settings/notifications',

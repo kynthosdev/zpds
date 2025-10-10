@@ -1,7 +1,12 @@
 <script lang="ts" setup>
 import { sub } from 'date-fns'
 import type { DropdownMenuItem } from '@nuxt/ui'
-import type { Period, Range } from '~/types'
+import type { Period, Range, Idea } from '~/types'
+
+// Import the new components
+import InnovationStats from '~/components/dashboard/InnovationStats.vue'
+import RecentIdeasTable from '~/components/dashboard/RecentIdeasTable.vue'
+import DashboardCharts from '~/components/dashboard/DashboardCharts.vue'
 
 definePageMeta({
   layout: 'dashboard'
@@ -10,27 +15,30 @@ definePageMeta({
 const { isNotificationsSlideoverOpen } = useDashboard()
 
 const items = [[{
-  label: 'New mail',
-  icon: 'i-lucide-send',
-  to: '/inbox'
+  label: 'Submit New Idea',
+  icon: 'i-lucide-lightbulb',
+  to: '/ideas/submit'
 }, {
-  label: 'New customer',
-  icon: 'i-lucide-user-plus',
-  to: '/customers'
+  label: 'View All Ideas',
+  icon: 'i-lucide-file-text',
+  to: '/ideas'
 }]] satisfies DropdownMenuItem[][]
 
+// Fetch ideas data
+const { data: ideas } = await useFetch<Idea[]>('/api/ideas')
+
 const range = shallowRef<Range>({
-  start: sub(new Date(), { days: 14 }),
+  start: sub(new Date(), { days: 30 }),
   end: new Date()
 })
-const period = ref<Period>('daily')
+const period = ref<Period>('weekly')
 </script>
 
 <template>
-  <UDashboardPanel id="home">
+  <UDashboardPanel id="innovation-dashboard">
     <template #header>
       <UDashboardNavbar
-        title="Home"
+        title="Innovation Dashboard"
         :ui="{ right: 'gap-3' }"
       >
         <template #leading>
@@ -87,17 +95,22 @@ const period = ref<Period>('daily')
     </template>
 
     <template #body>
-      <HomeStats
-        :period="period"
-        :range="range"
+      <!-- Innovation Stats -->
+      <InnovationStats
+        v-if="ideas"
+        :ideas="ideas"
       />
-      <HomeChart
-        :period="period"
-        :range="range"
+
+      <!-- Dashboard Charts -->
+      <DashboardCharts
+        v-if="ideas"
+        :ideas="ideas"
       />
-      <HomeSales
-        :period="period"
-        :range="range"
+
+      <!-- Recent Ideas -->
+      <RecentIdeasTable
+        v-if="ideas"
+        :ideas="ideas"
       />
     </template>
   </UDashboardPanel>
