@@ -34,7 +34,7 @@ The project is built on a **Nuxt UI SaaS template** that provides:
 │  └── Analytics & Reporting                                 │
 ├─────────────────────────────────────────────────────────────┤
 │  Data Layer                                                 │
-│  ├── SQLite Database (better-sqlite3)                      │
+│  ├── PostgreSQL Database (Drizzle ORM)                     │
 │  ├── File Storage (for attachments)                        │
 │  └── Session Management                                     │
 └─────────────────────────────────────────────────────────────┘
@@ -43,13 +43,14 @@ The project is built on a **Nuxt UI SaaS template** that provides:
 ## Key Technical Decisions
 
 ### Database Strategy
-**Decision**: Use SQLite with better-sqlite3 for MVP
-**Rationale**: 
-- Already included in dependencies
-- Perfect for MVP and small-to-medium deployments
-- Zero configuration overhead
-- Easy migration path to PostgreSQL later
-- Excellent performance for expected load
+**Decision**: Use PostgreSQL with Drizzle ORM for production-ready database
+**Rationale**:
+- Cloud-hosted via Neon for serverless scalability and high availability
+- Type-safe ORM with compile-time SQL validation
+- ACID compliance for transactional integrity
+- Better performance for concurrent workloads
+- Native JSON support for flexible data structures
+- Built-in connection pooling and optimization
 
 ### Authentication Approach
 **Decision**: Use Clerk for authentication and user management

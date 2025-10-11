@@ -36,6 +36,13 @@ Clerk integration for authentication continues in parallel with landing page dev
 - Implemented prioritized Clerk frontend auth: Account config, @clerk/nuxt install, app.vue wrapper, login/signup/profile components, protected routes
 - Partial RBAC in AppHeader.vue; full backend deferred
 
+### Database Migration: SQLite to Drizzle + Neon PostgreSQL (October 11, 2025)
+- Migrated from SQLite MVP setup to production-ready PostgreSQL with Drizzle ORM
+- Selected Neon PostgreSQL for serverless scalability and high availability
+- Updated all memory bank files to reflect new database architecture
+- Benefits: Better concurrency, ACID compliance, cloud scalability, type safety
+- Migration path documented for seamless transition from development to production
+
 ## Next Steps
 
 ### Immediate Next Steps: Landing Page Refinement

@@ -1,36 +1,48 @@
 <script setup lang="ts">
 const columns = [{
-  label: 'Resources',
+  label: 'Product',
   children: [{
-    label: 'Help center'
+    label: 'Features',
+    to: '/#features'
   }, {
-    label: 'Docs'
+    label: 'Pricing',
+    to: '/pricing'
   }, {
-    label: 'Roadmap'
+    label: 'Use Cases',
+    to: '/#product'
   }, {
-    label: 'Changelog'
+    label: 'Integrations',
+    to: '/pricing'
   }]
 }, {
-  label: 'Features',
+  label: 'Resources',
   children: [{
-    label: 'Affiliates'
+    label: 'Blog',
+    to: '/blog'
   }, {
-    label: 'Portal'
+    label: 'Case Studies',
+    to: '/blog'
   }, {
-    label: 'Jobs'
+    label: 'Help Center',
+    to: '/docs'
   }, {
-    label: 'Sponsors'
+    label: 'Templates',
+    to: '/blog'
   }]
 }, {
   label: 'Company',
   children: [{
-    label: 'About'
+    label: 'About Us',
+    to: '/about'
   }, {
-    label: 'Pricing'
+    label: 'Contact',
+    to: '/contact'
   }, {
-    label: 'Careers'
+    label: 'Privacy Policy',
+    to: '/privacy'
   }, {
-    label: 'Blog'
+    label: 'Terms of Service',
+    to: '/terms'
   }]
 }]
 
@@ -50,10 +62,7 @@ function onSubmit() {
 </script>
 
 <template>
-  <USeparator
-    icon="i-simple-icons-nuxtdotjs"
-    class="h-px"
-  />
+  <USeparator class="h-px" />
 
   <UFooter :ui="{ top: 'border-b border-default' }">
     <template #top>
@@ -90,32 +99,24 @@ function onSubmit() {
 
     <template #left>
       <p class="text-muted text-sm">
-        Built with Nuxt UI • © {{ new Date().getFullYear() }}
+        © {{ new Date().getFullYear() }} IdeaNexus. All rights reserved. POPIA Compliant. South African servers.
       </p>
     </template>
 
     <template #right>
       <UButton
-        to="https://go.nuxt.com/discord"
+        to="https://linkedin.com/company/ideanexus"
         target="_blank"
-        icon="i-simple-icons-discord"
-        aria-label="Nuxt on Discord"
+        icon="i-simple-icons-linkedin"
+        aria-label="IdeaNexus on LinkedIn"
         color="neutral"
         variant="ghost"
       />
       <UButton
-        to="https://go.nuxt.com/x"
+        to="https://twitter.com/ideanexus_sa"
         target="_blank"
         icon="i-simple-icons-x"
-        aria-label="Nuxt on X"
-        color="neutral"
-        variant="ghost"
-      />
-      <UButton
-        to="https://github.com/nuxt-ui-templates/saas"
-        target="_blank"
-        icon="i-simple-icons-github"
-        aria-label="Nuxt UI on GitHub"
+        aria-label="IdeaNexus on X"
         color="neutral"
         variant="ghost"
       />

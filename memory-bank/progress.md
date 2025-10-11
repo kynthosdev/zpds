@@ -8,6 +8,36 @@
 
 ## Current Tasks
 
+### Database Migration: SQLite to Drizzle + Neon PostgreSQL (Priority: HIGH - Architecture Update)
+**Timeline**: Immediate | **Status**: In Progress
+- [ ] Update techContext.md with new database stack
+  - [ ] Replace SQLite references with PostgreSQL + Drizzle
+  - [ ] Update database configuration section
+  - [ ] Add Neon PostgreSQL setup instructions
+  - [ ] Update migration and deployment patterns
+  - [ ] Document Drizzle ORM integration
+- [ ] Update systemPatterns.md database strategy
+  - [ ] Change database strategy from SQLite to PostgreSQL
+  - [ ] Update database schema patterns for Drizzle
+  - [ ] Modify critical implementation paths
+  - [ ] Update performance considerations
+  - [ ] Document migration benefits and trade-offs
+- [ ] Update activeContext.md with database change
+  - [ ] Document recent database setup change
+  - [ ] Update current work focus
+  - [ ] Add migration considerations
+  - [ ] Update next steps for database implementation
+- [x] Update progress.md database references
+  - [x] Update "TO BE IMPLEMENTED" database tasks
+  - [x] Document migration path and benefits
+  - [x] Update success metrics for new stack
+  - [x] Add database implementation checklist
+- [x] Document migration considerations
+  - [x] Create migration guide from SQLite to PostgreSQL
+  - [x] Document benefits of cloud-hosted database
+  - [x] Update scalability planning
+  - [x] Add cost considerations for Neon PostgreSQL
+
 ### Landing Page Development (Priority: CRITICAL - Pre-MVP Launch)
 **Timeline**: Weeks 1-5 | **Target Launch**: Before Platform MVP
 
@@ -264,14 +294,17 @@
 ## TO BE IMPLEMENTED
 
 ### Database & Backend (Priority: High)
-- [ ] Design database schema for core entities
-- [ ] Set up SQLite database with better-sqlite3
-- [ ] Create database migration system
-- [ ] Implement user management tables
-- [ ] Create idea management tables
-- [ ] Set up evaluation workflow tables
-- [ ] Add notification system tables
-- [ ] Implement audit trail functionality
+- [ ] Design Drizzle schema for core entities (users, ideas, evaluations, notifications)
+- [ ] Set up Neon PostgreSQL database connection
+- [ ] Configure Drizzle ORM with PostgreSQL dialect
+- [ ] Create database migration system with Drizzle Kit
+- [ ] Implement user management tables with Clerk integration
+- [ ] Create idea management tables with proper relationships
+- [ ] Set up evaluation workflow tables with scoring system
+- [ ] Add notification system tables with email integration
+- [ ] Implement audit trail functionality for compliance
+- [ ] Set up database connection pooling for performance
+- [ ] Create database utilities and connection management
 
 ### Authentication System (Priority: High)
 - [x] Sign up for Clerk and configure application instance
@@ -371,7 +404,8 @@
 
 ### Technology Stack
 - ✅ **Vue 3 + Nuxt 4**: Modern, performant framework
-- ✅ **SQLite Database**: Perfect for MVP and medium-scale deployment
+- ✅ **PostgreSQL + Drizzle ORM**: Cloud-hosted database with type-safe ORM
+- ✅ **Neon PostgreSQL**: Serverless database platform for scalability
 - ✅ **Zod Validation**: Type-safe schema validation
 - ✅ **VueUse**: Comprehensive composition utilities
 - ✅ **Image Optimization**: Built-in image handling
@@ -428,9 +462,9 @@
 
 ### Initial Decisions (September 2025)
 - **Framework Choice**: Nuxt 4 selected for full-stack capabilities
-- **Database Strategy**: SQLite chosen for MVP simplicity
+- **Database Strategy**: SQLite chosen for MVP simplicity (Updated October 2025: Migrated to PostgreSQL + Drizzle for cloud scalability)
 - **UI Framework**: Nuxt UI selected for rapid development
-- **Authentication**: Custom JWT implementation planned
+- **Authentication**: Custom JWT implementation planned (Updated September 2025: Clerk selected for rapid auth implementation)
 - **Deployment**: Static generation with server API planned
 
 ### Key Insights Gained
@@ -476,7 +510,7 @@
 
 ### Week 1 Goals
 1. **Clerk Authentication**: Frontend integration complete (login working; finish signup/profile/RBAC); backend deferred
-2. **Database Implementation**: Set up SQLite with core tables including clerk_user_id
+2. **Database Implementation**: Set up PostgreSQL + Drizzle with core tables including clerk_user_id
 3. **Dashboard Structure**: Create authenticated application shell with Clerk (protected index.vue)
 4. **Development Workflow**: Establish coding standards and practices
 

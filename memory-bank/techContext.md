@@ -26,11 +26,11 @@
 - **Search Integration**: Built-in content search
 
 ### Database & Storage
-**SQLite with better-sqlite3 12.4.1**
-- **Embedded Database**: Zero-configuration setup
-- **High Performance**: Excellent for MVP and medium-scale deployments
-- **ACID Compliance**: Data integrity guarantees
-- **Migration Path**: Easy upgrade to PostgreSQL when needed
+**PostgreSQL with Drizzle ORM**
+- **Cloud-Hosted Database**: Neon PostgreSQL for serverless scalability
+- **Type-Safe ORM**: Drizzle provides compile-time SQL validation
+- **ACID Compliance**: Full transactional integrity
+- **High Performance**: Optimized for concurrent workloads
 
 ### Development Tools
 **ESLint 9.36.0** with Nuxt ESLint config
@@ -125,7 +125,7 @@ zpds/
 - **XSS Prevention**: Content Security Policy implementation
 
 ### Scalability Considerations
-- **Database**: SQLite for MVP, PostgreSQL migration path
+- **Database**: PostgreSQL with Neon for horizontal scaling and high availability
 - **File Storage**: Local storage for MVP, cloud storage migration path
 - **Caching**: In-memory caching for frequently accessed data
 - **CDN**: Static asset delivery optimization
@@ -139,7 +139,9 @@ zpds/
   "@nuxt/content": "^3.7.1",     // Content management
   "@nuxt/image": "^1.11.0",      // Image optimization
   "nuxt": "^4.1.2",              // Core framework
-  "better-sqlite3": "^12.4.1",   // Database driver
+  "drizzle-orm": "^0.30.0",      // Type-safe ORM
+  "postgres": "^3.4.0",          // PostgreSQL driver
+  "drizzle-kit": "^0.20.0",      // Migration toolkit
   "zod": "^4.1.11",              // Schema validation
   "@clerk/nuxt": "^1.0.0"        // Authentication service
 }
@@ -173,17 +175,30 @@ zpds/
 
 ### Database Management
 ```typescript
-// Database initialization pattern
-import Database from 'better-sqlite3'
+// Drizzle schema definition pattern
+import { pgTable, text, integer, timestamp } from 'drizzle-orm/pg-core'
+import { createId } from '@paralleldrive/cuid2'
 
-const db = new Database('ideanexus.db')
+export const users = pgTable('users', {
+  id: text('id').primaryKey().$defaultFn(() => createId()),
+  clerkId: text('clerk_id').unique().notNull(),
+  email: text('email').notNull(),
+  name: text('name'),
+  role: text('role').default('user'),
+  createdAt: timestamp('created_at').defaultNow(),
+})
 
-// Migration pattern
-const migrations = [
-  'CREATE TABLE users (...)',
-  'CREATE TABLE ideas (...)',
-  'CREATE TABLE evaluations (...)'
-]
+// Drizzle migration pattern
+import { drizzle } from 'drizzle-orm/postgres-js'
+import postgres from 'postgres'
+import * as schema from './schema'
+
+const client = postgres(process.env.DATABASE_URL!)
+export const db = drizzle(client, { schema })
+
+// Migration commands
+// npx drizzle-kit generate:pg
+// npx drizzle-kit push:pg
 ```
 
 ### API Development Pattern
@@ -819,9 +834,9 @@ pnpm percy:snapshot
 ## Migration Considerations
 
 ### Database Migration Path
-- **Current**: SQLite for development and MVP
-- **Future**: PostgreSQL for production scaling
-- **Strategy**: Abstract database layer for easy migration
+- **Current**: PostgreSQL + Drizzle for production-ready database
+- **Migration**: From development to production Neon PostgreSQL
+- **Strategy**: Drizzle Kit for seamless schema migrations and deployments
 
 ### Deployment Options
 - **Current**: Static generation with Nuxt generate
