@@ -8,7 +8,8 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-og-image',
     '@nuxt/test-utils',
-    '@clerk/nuxt'
+    '@clerk/nuxt',
+    '@pinia/nuxt'
   ],
 
   devtools: {

@@ -92,6 +92,22 @@ export interface Idea {
 
 export type IdeaStatus = 'submitted' | 'under_review' | 'approved' | 'in_progress' | 'implemented' | 'rejected'
 
+export interface Evaluation {
+  id: string
+  ideaId: string
+  impactScore: number | null
+  feasibilityScore: number | null
+  resourceScore: number | null
+  strategicScore: number | null
+  comments?: string | null
+  recommendation: 'approve' | 'reject' | 'request_info' | null
+  status: string
+  createdAt: string
+  updatedAt: string
+  evaluatorId?: string | null
+  evaluatorName?: string | null
+}
+
 // Pipeline column configuration
 export interface PipelineColumnConfig {
   status: IdeaStatus

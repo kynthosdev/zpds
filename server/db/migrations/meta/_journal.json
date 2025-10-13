@@ -8,6 +8,20 @@
       "when": 1760190693429,
       "tag": "0000_slim_shaman",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1760375650547,
+      "tag": "0001_living_johnny_blaze",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1760376537667,
+      "tag": "0002_skinny_unicorn",
+      "breakpoints": true
     }
   ]
 }

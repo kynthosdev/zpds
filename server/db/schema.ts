@@ -30,3 +30,19 @@ export const ideas = pgTable('ideas', {
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow()
 })
+
+// Evaluations table
+export const evaluations = pgTable('evaluations', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  ideaId: uuid('idea_id').references(() => ideas.id).notNull(),
+  evaluatorId: uuid('evaluator_id').references(() => users.id),
+  impactScore: integer('impact_score'),
+  feasibilityScore: integer('feasibility_score'),
+  resourceScore: integer('resource_score'),
+  strategicScore: integer('strategic_score'),
+  comments: text('comments'),
+  recommendation: text('recommendation'),
+  status: text('status').default('pending'),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow()
+})

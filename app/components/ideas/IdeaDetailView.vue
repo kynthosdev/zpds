@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import type { Idea } from '~/types'
+import { useEvaluationStore } from '@/stores/evaluation'
+import EvaluationForm from './EvaluationForm.vue'
+import EvaluationCard from './EvaluationCard.vue'
 
 interface Props {
   idea: Idea
@@ -8,6 +12,10 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const evaluationStore = useEvaluationStore()
+
+const showEvaluationForm = ref(false)
+const error = ref<string | null>(null)
 
 const getStatusColor = (status: string): 'primary' | 'warning' | 'success' | 'info' | 'error' => {
   const colors: Record<string, 'primary' | 'warning' | 'success' | 'info' | 'error'> = {
@@ -46,6 +54,37 @@ const getResourcesText = (resources: string) => {
     high: 'High - Significant resources required'
   }
   return texts[resources] || resources
+}
+
+// Load evaluations when component mounts
+onMounted(async () => {
+  if (props.idea.id) {
+    try {
+      await evaluationStore.fetchEvaluations(props.idea.id)
+    } catch (err) {
+      error.value = 'Failed to load evaluations'
+      console.error('Error loading evaluations:', err)
+    }
+  }
+})
+
+// Handle form submission
+const handleEvaluationSubmitted = async () => {
+  showEvaluationForm.value = false
+  // Refresh evaluations
+  if (props.idea.id) {
+    try {
+      await evaluationStore.fetchEvaluations(props.idea.id)
+    } catch (err) {
+      error.value = 'Failed to refresh evaluations'
+      console.error('Error refreshing evaluations:', err)
+    }
+  }
+}
+
+// Handle form cancellation
+const handleEvaluationCancelled = () => {
+  showEvaluationForm.value = false
 }
 </script>
 
@@ -168,6 +207,65 @@ const getResourcesText = (resources: string) => {
       >
         Edit Idea
       </UButton>
+    </div>
+
+    <!-- Evaluations Section -->
+    <div class="mt-8">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+          Evaluations
+        </h3>
+        <UButton
+          v-if="!showEvaluationForm"
+          @click="showEvaluationForm = true"
+        >
+          Add Evaluation
+        </UButton>
+      </div>
+
+      <!-- Evaluation Form -->
+      <div
+        v-if="showEvaluationForm"
+        class="mb-6"
+      >
+        <EvaluationForm
+          :idea-id="idea.id.toString()"
+          @submitted="handleEvaluationSubmitted"
+          @cancelled="handleEvaluationCancelled"
+        />
+      </div>
+
+      <!-- Evaluations List -->
+      <div v-else>
+        <div
+          v-if="evaluationStore.loading"
+          class="text-center py-4"
+        >
+          <USpinner />
+        </div>
+        <div
+          v-else-if="evaluationStore.error"
+          class="text-red-500 text-center py-4"
+        >
+          {{ evaluationStore.error }}
+        </div>
+        <div
+          v-else-if="evaluationStore.evaluations.get(idea.id)?.length === 0"
+          class="text-center py-4 text-gray-500"
+        >
+          No evaluations yet
+        </div>
+        <div
+          v-else
+          class="space-y-4"
+        >
+          <EvaluationCard
+            v-for="evaluation in evaluationStore.evaluations.get(idea.id)"
+            :key="evaluation.id"
+            :evaluation="evaluation"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>

@@ -1,0 +1,1 @@
+ALTER TABLE "evaluations" ALTER COLUMN "evaluator_id" DROP NOT NULL;
