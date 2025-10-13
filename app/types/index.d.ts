@@ -74,7 +74,7 @@ export interface Range {
 }
 
 export interface Idea {
-  id: number
+  id: string
   title: string
   description: string
   status: 'submitted' | 'under_review' | 'approved' | 'in_progress' | 'implemented' | 'rejected'

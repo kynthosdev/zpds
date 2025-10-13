@@ -9,7 +9,7 @@ definePageMeta({
   layout: 'dashboard'
 })
 
-const { data, pending, error, refresh } = useAsyncData('ideas', () => $fetch('/api/ideas'))
+const { data, pending, error, refresh } = useAsyncData('ideas', () => $fetch<Idea[]>('/api/ideas'))
 
 // Simplified columns for table view
 const columns = ref([
