@@ -215,12 +215,36 @@ Event Trigger → Notification Creation → Delivery (Email/In-App) → Read Sta
 - UNotification for system feedback
 
 ### Database Schema Patterns
-```sql
--- Core tables following relational design
-users (id, email, name, role, department, created_at)
-ideas (id, title, description, submitter_id, status, created_at, updated_at)
-evaluations (id, idea_id, evaluator_id, scores, comments, recommendation, created_at)
-notifications (id, user_id, type, content, read_at, created_at)
+```typescript
+// Users table
+export const users = pgTable('users', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  clerkId: text('clerk_id').unique().notNull(),
+  email: text('email').notNull(),
+  name: text('name'),
+  role: text('role').default('user'),
+  department: text('department'),
+  createdAt: timestamp('created_at').defaultNow()
+})
+
+// Ideas table
+export const ideas = pgTable('ideas', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  title: text('title').notNull(),
+  description: text('description').notNull(),
+  submitterId: uuid('submitter_id').references(() => users.id).notNull(),
+  status: text('status').default('submitted'),
+  department: text('department'),
+  type: text('type'),
+  strategy: text('strategy'),
+  workstation: text('workstation'),
+  benefits: text('benefits'),
+  resourcesRequired: text('resources_required').default('medium'),
+  evaluatorId: uuid('evaluator_id').references(() => users.id),
+  impactScore: integer('impact_score').default(3),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow()
+})
 ```
 
 ### API Design Patterns

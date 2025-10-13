@@ -161,7 +161,7 @@ Following Eric Ries' Lean Startup methodology, our MVP development will be guide
 ## 6. Development Timeline and Milestones
 **17-Week Development Timeline (Landing Page Priority):**
 
-### Phase 1: Landing Page Development (Weeks 1-5) - **CRITICAL PRIORITY**
+### Phase 1: Landing Page Development (Weeks 1-5) - **DEFERRED (Current Priority: Core Platform)**
 **Goal**: Launch landing page before platform MVP to begin lead generation
 - **Week 1-2: Foundation & Core Components**
   - Set up landing page project structure

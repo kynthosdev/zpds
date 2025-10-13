@@ -31,6 +31,10 @@
 - **Type-Safe ORM**: Drizzle provides compile-time SQL validation
 - **ACID Compliance**: Full transactional integrity
 - **High Performance**: Optimized for concurrent workloads
+- **Implemented Schema**:
+  - Users table with Clerk integration (clerk_id)
+  - Ideas table with status tracking and evaluation fields
+  - Proper relational constraints and foreign keys
 
 ### Development Tools
 **ESLint 9.36.0** with Nuxt ESLint config

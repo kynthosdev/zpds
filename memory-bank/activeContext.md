@@ -57,12 +57,12 @@ Clerk integration for authentication continues in parallel with landing page dev
 
 ## Next Steps
 
-### Immediate Next Steps: Landing Page Refinement
-1. Review and refine landing page component structure based on feedback.
-2. Finalize reusable components (CTAButton, TestimonialCard, FAQAccordion, StatsCard) and ensure consistency.
-3. Implement and test the demo request form integration with Clerk.
-4. Verify Google Analytics 4 setup and event tracking.
-5. Populate Nuxt Content with finalized mock testimonials and case studies.
+### Immediate Next Steps: Core Platform Development
+1. Complete database schema design for PostgreSQL + Drizzle
+2. Implement Clerk authentication backend integration
+3. Develop API foundation for idea management
+4. Create dashboard components with real data integration
+5. Build idea submission and evaluation workflows
 
 ### Short-term Goals: Landing Page Optimization
 1. Optimize images and performance, targeting a Largest Contentful Paint (LCP) of <2.5s.
