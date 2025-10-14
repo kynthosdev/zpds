@@ -89,7 +89,7 @@ const handleEvaluationCancelled = () => {
 </script>
 
 <template>
-  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 max-h-[calc(100vh-8rem)] overflow-y-auto">
     <div class="flex justify-between items-start mb-6">
       <div>
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">

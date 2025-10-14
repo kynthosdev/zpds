@@ -2,14 +2,14 @@
 const props = defineProps<{
   evaluation: {
     id: string
-    impactScore: number
-    feasibilityScore: number
-    resourceScore: number
-    strategicScore: number
-    comments?: string
-    recommendation: 'approve' | 'reject' | 'request_info'
+    impactScore: number | null
+    feasibilityScore: number | null
+    resourceScore: number | null
+    strategicScore: number | null
+    comments?: string | null
+    recommendation: 'approve' | 'reject' | 'request_info' | null
     createdAt: string
-    evaluatorName?: string
+    evaluatorName?: string | null
   }
 }>()
 
@@ -73,7 +73,7 @@ const { evaluation } = props
         Recommendation
       </p>
       <p class="font-semibold capitalize">
-        {{ evaluation.recommendation.replace('_', ' ') }}
+        {{ evaluation.recommendation?.replace('_', ' ') ?? 'No recommendation' }}
       </p>
     </div>
 
