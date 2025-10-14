@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Idea, IdeaStatus } from '~/types'
+import { VueDraggableNext as draggable } from 'vue-draggable-next'
 
 interface Props {
   ideas: Idea[]
@@ -11,7 +12,7 @@ interface Props {
 
 const props = defineProps<Props>()
 const emit = defineEmits<{
-  (e: 'view-idea' | 'edit-idea', idea: Idea): void
+  (e: 'view-idea' | 'edit-idea' | 'update-idea', idea: Idea): void
 }>()
 
 // Get badge color based on impact score
@@ -47,13 +48,25 @@ const getStatusText = (status: IdeaStatus) => {
   return texts[status] || status
 }
 
-// Filter ideas by status
-const filteredIdeas = computed(() => {
-  return props.ideas.filter(idea => idea.status === props.status)
-})
+// Since ideas are now pre-filtered, use props.ideas directly
+const ideaCount = computed(() => props.ideas.length)
 
-// Count of ideas in this column
-const ideaCount = computed(() => filteredIdeas.value.length)
+// Handle drag update event (when idea is moved within or between columns)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const handleDragUpdate = (event: any) => {
+  // Check if this is a move between columns (not within the same column)
+  // event.added is when an item is added to this list
+  // event.moved is when an item is moved within the same list
+  if (event.added) {
+    // Item was dragged into this column from another column
+    const updatedIdea = { ...event.added.element, status: props.status }
+    emit('update-idea', updatedIdea)
+  } else if (event.moved) {
+    // Item was moved within the same column - no status change needed
+    // But we might still want to emit for reordering purposes
+    // For now, we'll ignore internal moves since status doesn't change
+  }
+}
 
 // Handle idea click
 const handleIdeaClick = (idea: Idea) => {
@@ -80,50 +93,58 @@ const handleEditClick = (idea: Idea, event: Event) => {
       </UBadge>
     </h3>
     <div class="space-y-3">
-      <div
-        v-for="idea in filteredIdeas"
-        :key="idea.id"
-        class="bg-white dark:bg-gray-700 rounded-lg p-3 shadow-sm border border-gray-200 dark:border-gray-600 cursor-pointer hover:shadow-md transition-shadow"
-        @click="handleIdeaClick(idea)"
+      <draggable
+        :list="props.ideas"
+        group="ideas"
+        class="space-y-3"
+        :animation="150"
+        @change="handleDragUpdate"
       >
-        <div class="flex justify-between items-start mb-2">
-          <h4 class="font-medium text-sm text-gray-900 dark:text-white line-clamp-2">
-            {{ idea.title }}
-          </h4>
-          <UButton
-            variant="ghost"
-            size="xs"
-            icon="i-lucide-more-horizontal"
-            @click.stop="handleEditClick(idea, $event)"
-          />
+        <div
+          v-for="idea in props.ideas"
+          :key="idea.id"
+          class="bg-white dark:bg-gray-700 rounded-lg p-3 shadow-sm border border-gray-200 dark:border-gray-600 cursor-pointer hover:shadow-md transition-shadow"
+          @click="handleIdeaClick(idea)"
+        >
+          <div class="flex justify-between items-start mb-2">
+            <h4 class="font-medium text-sm text-gray-900 dark:text-white line-clamp-2">
+              {{ idea.title }}
+            </h4>
+            <UButton
+              variant="ghost"
+              size="xs"
+              icon="i-lucide-more-horizontal"
+              @click.stop="handleEditClick(idea, $event)"
+            />
+          </div>
+          <p class="text-xs text-gray-600 dark:text-gray-300 mb-3 line-clamp-2">
+            {{ idea.description }}
+          </p>
+          <div class="flex flex-wrap gap-1 mb-2">
+            <UBadge
+              size="xs"
+              :color="getImpactColor(idea.impactScore)"
+            >
+              Impact: {{ idea.impactScore }}/10
+            </UBadge>
+            <UBadge
+              size="xs"
+              :color="getStatusColor(idea.status)"
+            >
+              {{ getStatusText(idea.status) }}
+            </UBadge>
+          </div>
+          <div class="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
+            <span>{{ idea.submitter }}</span>
+            <span>{{ idea.department }}</span>
+          </div>
+          <div class="text-xs text-gray-400 dark:text-gray-500 mt-1">
+            {{ new Date(idea.createdAt).toLocaleDateString() }}
+          </div>
         </div>
-        <p class="text-xs text-gray-600 dark:text-gray-300 mb-3 line-clamp-2">
-          {{ idea.description }}
-        </p>
-        <div class="flex flex-wrap gap-1 mb-2">
-          <UBadge
-            size="xs"
-            :color="getImpactColor(idea.impactScore)"
-          >
-            Impact: {{ idea.impactScore }}/10
-          </UBadge>
-          <UBadge
-            size="xs"
-            :color="getStatusColor(idea.status)"
-          >
-            {{ getStatusText(idea.status) }}
-          </UBadge>
-        </div>
-        <div class="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
-          <span>{{ idea.submitter }}</span>
-          <span>{{ idea.department }}</span>
-        </div>
-        <div class="text-xs text-gray-400 dark:text-gray-500 mt-1">
-          {{ new Date(idea.createdAt).toLocaleDateString() }}
-        </div>
-      </div>
+      </draggable>
       <div
-        v-if="filteredIdeas.length === 0"
+        v-if="props.ideas.length === 0"
         class="text-center py-8 text-gray-500 dark:text-gray-400"
       >
         <div class="i-lucide-inbox w-8 h-8 mx-auto mb-2 opacity-50" />

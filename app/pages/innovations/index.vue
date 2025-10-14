@@ -78,6 +78,21 @@ const closeSubmissionForm = () => {
   showSubmissionForm.value = false
   selectedIdea.value = null
 }
+
+// Handle idea update (when dragged to new status)
+const handleUpdateIdea = (updatedIdea: Idea) => {
+  // Update the local data array
+  if (data.value) {
+    const index = data.value.findIndex(idea => idea.id === updatedIdea.id)
+    if (index !== -1) {
+      data.value[index] = updatedIdea
+    }
+  }
+
+  // In a real implementation, this would PATCH to the API
+  console.log('Updating idea status:', updatedIdea)
+  // Example: $fetch(`/api/ideas/${updatedIdea.id}`, { method: 'PATCH', body: { status: updatedIdea.status } })
+}
 </script>
 
 <template>
@@ -148,6 +163,7 @@ const closeSubmissionForm = () => {
         :ideas="data"
         @view-idea="handleViewIdea"
         @edit-idea="handleEditIdea"
+        @update-idea="handleUpdateIdea"
       />
     </div>
 

@@ -8,7 +8,7 @@ interface Props {
 
 const props = defineProps<Props>()
 const emit = defineEmits<{
-  (e: 'view-idea' | 'edit-idea', idea: Idea): void
+  (e: 'view-idea' | 'edit-idea' | 'update-idea', idea: Idea): void
 }>()
 
 // Define pipeline columns configuration
@@ -45,6 +45,34 @@ const pipelineColumns: PipelineColumnConfig[] = [
   }
 ]
 
+// Reactive arrays for each status group
+const submittedIdeas = ref<Idea[]>([])
+const underReviewIdeas = ref<Idea[]>([])
+const approvedIdeas = ref<Idea[]>([])
+const inProgressIdeas = ref<Idea[]>([])
+const implementedIdeas = ref<Idea[]>([])
+
+// Watch for changes in props.ideas and update status groups
+watch(() => props.ideas, (newIdeas) => {
+  submittedIdeas.value = newIdeas.filter(idea => idea.status === 'submitted')
+  underReviewIdeas.value = newIdeas.filter(idea => idea.status === 'under_review')
+  approvedIdeas.value = newIdeas.filter(idea => idea.status === 'approved')
+  inProgressIdeas.value = newIdeas.filter(idea => idea.status === 'in_progress')
+  implementedIdeas.value = newIdeas.filter(idea => idea.status === 'implemented')
+}, { immediate: true })
+
+// Get the appropriate ideas array for a column
+const getIdeasForColumn = (status: PipelineColumnConfig['status']) => {
+  switch (status) {
+    case 'submitted': return submittedIdeas.value
+    case 'under_review': return underReviewIdeas.value
+    case 'approved': return approvedIdeas.value
+    case 'in_progress': return inProgressIdeas.value
+    case 'implemented': return implementedIdeas.value
+    default: return []
+  }
+}
+
 // Handle view idea event
 const handleViewIdea = (idea: Idea) => {
   emit('view-idea', idea)
@@ -54,6 +82,11 @@ const handleViewIdea = (idea: Idea) => {
 const handleEditIdea = (idea: Idea) => {
   emit('edit-idea', idea)
 }
+
+// Handle idea update event (when dragged to new column)
+const handleUpdateIdea = (idea: Idea) => {
+  emit('update-idea', idea)
+}
 </script>
 
 <template>
@@ -61,13 +94,14 @@ const handleEditIdea = (idea: Idea) => {
     <PipelineColumn
       v-for="column in pipelineColumns"
       :key="column.status"
-      :ideas="props.ideas"
+      :ideas="getIdeasForColumn(column.status)"
       :status="column.status"
       :title="column.title"
       :icon="column.icon"
       :color="column.color"
       @view-idea="handleViewIdea"
       @edit-idea="handleEditIdea"
+      @update-idea="handleUpdateIdea"
     />
   </div>
 </template>
