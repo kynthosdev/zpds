@@ -112,6 +112,8 @@
 - [ ] Implement user management tables with Clerk integration
 - [ ] Create idea management tables with proper relationships
 - [x] Set up evaluation workflow tables with scoring system
+- [x] Added department/strategy/workstation API endpoints (2025-10-16)
+- [x] Restructured ideas API endpoints (2025-10-16)
 - [ ] Add notification system tables with email integration
 - [ ] Implement audit trail functionality for compliance
 - [ ] Set up database connection pooling for performance (Deferred on 2025-10-13: Prioritize MVP features first)
@@ -140,7 +142,8 @@
 ### Idea Management System (Priority: High)
 - [ ] Create idea submission form
 - [ ] Implement idea listing interface
-- [ ] Add idea detail view
+- [x] Enhanced idea detail view components (2025-10-16)
+- [x] Improved idea form validation (2025-10-16)
 - [ ] Create idea search functionality
 - [ ] Implement idea status tracking
 - [ ] Add idea editing capabilities
