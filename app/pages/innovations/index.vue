@@ -46,13 +46,63 @@ const showDetailView = ref(false)
 const showPipelineView = ref(true)
 const selectedIdea = ref<Idea | null>(null)
 
-// Handle idea submission
-const handleIdeaSubmit = (ideaData: Omit<Idea, 'id' | 'createdAt'>) => {
-  // In a real implementation, this would POST to the API
-  console.log('Submitting idea:', ideaData)
-  showSubmissionForm.value = false
-  // Refresh the data
-  refresh()
+// Handle idea submission/update
+const handleIdeaSubmit = async (ideaData: Partial<Idea> & Pick<Idea, 'title' | 'description' | 'department' | 'submitter' | 'status'>) => {
+  try {
+    // Show loading state
+    useToast().add({
+      title: ideaData.id ? 'Updating Idea' : 'Saving Idea',
+      description: 'Please wait...',
+      color: 'info'
+    })
+
+    // Determine if we're creating or updating
+    const isUpdate = !!ideaData.id
+    const url = isUpdate ? `/api/ideas/${ideaData.id}` : '/api/ideas'
+
+    // Make API call
+    const response = await $fetch<Idea>(url, {
+      method: isUpdate ? 'PATCH' : 'POST',
+      body: ideaData
+    })
+
+    // Show success message with notification info
+    useToast().add({
+      title: isUpdate ? 'Idea Updated Successfully!' : 'Idea Submitted Successfully!',
+      description: `Your idea "${response.title}" has been ${isUpdate ? 'updated' : 'submitted'} and notifications sent.`,
+      color: 'success',
+      duration: 5000
+    })
+
+    // Close form and refresh data
+    showSubmissionForm.value = false
+    selectedIdea.value = null
+    await refresh()
+
+    // Switch to pipeline view to show the new idea
+    showPipelineView.value = true
+  } catch (error: unknown) {
+    console.error('Error submitting idea:', error)
+
+    // Handle validation errors
+    const err = error as { statusCode?: number, data?: { issues?: { message: string }[] } }
+    if (err.statusCode === 400 && err.data?.issues) {
+      const validationErrors = err.data.issues.map(issue => issue.message).join(', ')
+      useToast().add({
+        title: 'Validation Error',
+        description: validationErrors,
+        color: 'error',
+        duration: 7000
+      })
+    } else {
+      // Show generic error message
+      useToast().add({
+        title: 'Submission Failed',
+        description: 'Failed to submit idea. Please check your connection and try again.',
+        color: 'error'
+      })
+    }
+  }
 }
 
 // Handle view idea

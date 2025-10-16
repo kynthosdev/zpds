@@ -86,6 +86,29 @@ const handleEvaluationSubmitted = async () => {
 const handleEvaluationCancelled = () => {
   showEvaluationForm.value = false
 }
+
+// Delete idea functionality
+const showDeleteModal = ref(false)
+
+const handleDelete = async () => {
+  try {
+    const response = await $fetch(`/api/ideas/${props.idea.id}`, {
+      method: 'DELETE'
+    })
+
+    // Close the modal and close the detail view
+    showDeleteModal.value = false
+    props.onClose()
+
+    // In a real app, we'd emit an event to refresh the parent list
+    // For now, we'll just close the view
+    console.log('Idea deleted successfully:', response)
+  } catch (error) {
+    console.error('Error deleting idea:', error)
+    // In a real app, we'd show a toast notification here
+    alert('Failed to delete idea. Please try again.')
+  }
+}
 </script>
 
 <template>
@@ -207,7 +230,55 @@ const handleEvaluationCancelled = () => {
       >
         Edit Idea
       </UButton>
+      <UButton
+        variant="solid"
+        color="error"
+        @click="showDeleteModal = true"
+      >
+        Delete Idea
+      </UButton>
     </div>
+
+    <!-- Delete Confirmation Modal -->
+    <UModal v-model:open="showDeleteModal">
+      <template #content>
+        <UCard>
+          <template #header>
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-semibold">
+                Confirm Deletion
+              </h3>
+              <UButton
+                variant="ghost"
+                color="primary"
+                icon="i-lucide-x"
+                @click="showDeleteModal = false"
+              />
+            </div>
+          </template>
+          <p class="mb-4">
+            Are you sure you want to delete "<strong>{{ idea.title }}</strong>"? This action cannot be undone.
+          </p>
+          <template #footer>
+            <div class="flex justify-end space-x-3">
+              <UButton
+                variant="outline"
+                @click="showDeleteModal = false"
+              >
+                Cancel
+              </UButton>
+              <UButton
+                variant="solid"
+                color="error"
+                @click="handleDelete"
+              >
+                Delete
+              </UButton>
+            </div>
+          </template>
+        </UCard>
+      </template>
+    </UModal>
 
     <!-- Evaluations Section -->
     <div class="mt-8">
@@ -241,7 +312,10 @@ const handleEvaluationCancelled = () => {
           v-if="evaluationStore.loading"
           class="text-center py-4"
         >
-          <USpinner />
+          <UIcon
+            name="i-lucide-loader-2"
+            class="animate-spin h-5 w-5 mx-auto text-primary"
+          />
         </div>
         <div
           v-else-if="evaluationStore.error"
